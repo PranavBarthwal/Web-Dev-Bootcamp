@@ -7,6 +7,7 @@ document.querySelectorAll("button")[i].addEventListener("click", function(){
     var button = this.innerHTML;
 
     playSound(button);
+    buttonAnimation(button);
 
 });
 }
@@ -15,6 +16,7 @@ document.querySelectorAll("button")[i].addEventListener("click", function(){
 //DETECTS KEYBOARD PRESS
 document.addEventListener("keydown", function(event){
     playSound(event.key);
+    buttonAnimation(event.key);
 })
 
 
@@ -63,9 +65,16 @@ function playSound(key){
  
 
         }
-
-
-
 }
 
- 
+
+function buttonAnimation(currentKey){
+        
+       var activeButton = document.querySelector("." + currentKey);
+
+       activeButton.classList.toggle("pressed");
+
+       setTimeout(function(){
+        activeButton.classList.remove("pressed");
+       }, 100);
+}
